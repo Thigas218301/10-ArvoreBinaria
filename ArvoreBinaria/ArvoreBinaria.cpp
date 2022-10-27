@@ -71,7 +71,7 @@ void menu()
 void inicializar()
 {
 
-	// provis�rio porque n�o libera a memoria usada pela arvore
+	// provisório porque não libera a memoria usada pela arvore
 	NO* raiz = NULL;
 	
 	cout << "Arvore inicializada \n";
@@ -121,9 +121,27 @@ NO* criaNO(int valor)
 
 NO* insereArvore(NO* no, int valor)
 {
-	
-}
+	if (no == NULL) {
+		no = criaNO(valor);
+		return no;
+	}
 
+	if (no->valor > valor) {
+		
+		
+		return insereArvore(no->dir, valor);
+		
+
+	}
+	else {
+
+		
+		return insereArvore(no->esq, valor);
+		
+
+	}
+}
+/*simplismente não faz sentido quando eu colo no código, não consegui fazer, e nunca senti tanta vontade de desmatar arvore depois de tentar fazer isso*/
 int elementosArvore(NO* no)
 {
 	if (no == NULL) {
@@ -135,5 +153,14 @@ int elementosArvore(NO* no)
 
 void exibirElementosArvore(NO* no)
 {
+	if (no == NULL) {
+
+
+		return;
+	}
+		cout << no->valor << endl;
+		
+		exibirElementosArvore(no->dir);
+		exibirElementosArvore(no->esq);
 	
 }
